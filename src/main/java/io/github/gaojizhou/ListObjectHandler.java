@@ -1,4 +1,4 @@
-package com.github.gaojizhou;
+package io.github.gaojizhou;
 
 import org.apache.ibatis.type.BaseTypeHandler;
 import org.apache.ibatis.type.JdbcType;
