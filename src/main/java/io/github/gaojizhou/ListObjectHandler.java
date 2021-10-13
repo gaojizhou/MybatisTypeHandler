@@ -7,6 +7,8 @@ import java.sql.*;
 import java.util.Arrays;
 import java.util.List;
 
+import static io.github.gaojizhou.constant.PostgreSqlDataType.VARCHAR;
+
 /**
  * @author gaojizhou
  */
@@ -52,12 +54,12 @@ public class ListObjectHandler extends BaseTypeHandler<List<String>> {
     private String getType(List<String> parameter) {
 
         if (parameter == null || parameter.isEmpty()) {
-            return "varchar";
+            return VARCHAR;
         }
         Object o = parameter.get(0);
         String typeName = null;
         if (o instanceof String) {
-            typeName = "varchar";
+            typeName = VARCHAR;
         }
         return typeName;
     }
