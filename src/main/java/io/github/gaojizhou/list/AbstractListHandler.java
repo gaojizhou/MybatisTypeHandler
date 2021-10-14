@@ -5,6 +5,7 @@ import org.apache.ibatis.type.JdbcType;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import static io.github.gaojizhou.constant.PostgreSqlDataType.VARCHAR;
@@ -14,17 +15,15 @@ import static io.github.gaojizhou.constant.PostgreSqlDataType.VARCHAR;
  */
 public abstract class AbstractListHandler<T> extends BaseTypeHandler<List<T>> {
 
-    public abstract Class<T> getClassT();
+    protected abstract String getTypeName(Object o);
 
-    public static <T> List<T> objectToList(Object arrayObj, Class<T> clazz) {
-        List<T> result = new ArrayList<T>();
-        if (arrayObj instanceof ArrayList<?>) {
-            List<?> list = (List<?>) arrayObj;
-            for (Object obj : list) {
-                result.add(clazz.cast(obj));
-            }
+    public static <T> List<T> objectToList(Object arrayObj) {
+        try {
+            T[] list = (T[]) arrayObj;
+            return Arrays.asList(list);
+        } catch (Exception e) {
+            return new ArrayList<T>();
         }
-        return result;
     }
 
     public List<T> getDownCastingList(Array array) {
@@ -32,7 +31,7 @@ public abstract class AbstractListHandler<T> extends BaseTypeHandler<List<T>> {
             return null;
         }
         try {
-            return objectToList(array.getArray(), getClassT());
+            return objectToList(array.getArray());
         } catch (SQLException throwable) {
             throwable.printStackTrace();
             return null;
@@ -47,7 +46,6 @@ public abstract class AbstractListHandler<T> extends BaseTypeHandler<List<T>> {
         return getTypeName(o);
     }
 
-    protected abstract String getTypeName(Object o);
 
 
     @Override

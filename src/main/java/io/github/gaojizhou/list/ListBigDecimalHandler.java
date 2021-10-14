@@ -2,21 +2,24 @@ package io.github.gaojizhou.list;
 
 import org.apache.ibatis.executor.result.ResultMapException;
 
-import static io.github.gaojizhou.constant.PostgreSqlDataType.VARCHAR;
+import java.math.BigDecimal;
+
+import static io.github.gaojizhou.constant.PostgreSqlDataType.NUMERIC;
 import static io.github.gaojizhou.constant.ErrorMessage.CHECK_HELP_MSG;
 import static io.github.gaojizhou.constant.ErrorMessage.checkOtherHandel;
+
 /**
  * @author gaojizhou
  */
-public class ListStringHandler extends AbstractListHandler<String> {
+public class ListBigDecimalHandler extends AbstractListHandler<BigDecimal> {
 
     @Override
-    protected String getTypeName(Object o) {
-        if (o instanceof String) {
-            return VARCHAR;
+    public String getTypeName(Object o) {
+        if (o instanceof BigDecimal) {
+            return NUMERIC;
         } else {
             throw new ResultMapException(
-                    "ListStringHandler only fit to convert List<String> to varchar[], "
+                    "ListBigDecimalHandler only fit to convert List<BigDecimal> to numeric[], "
                             + CHECK_HELP_MSG
                             + checkOtherHandel(o)
             );

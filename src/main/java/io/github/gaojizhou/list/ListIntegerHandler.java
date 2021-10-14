@@ -2,21 +2,22 @@ package io.github.gaojizhou.list;
 
 import org.apache.ibatis.executor.result.ResultMapException;
 
-import static io.github.gaojizhou.constant.PostgreSqlDataType.VARCHAR;
+import static io.github.gaojizhou.constant.PostgreSqlDataType.INTEGER;
 import static io.github.gaojizhou.constant.ErrorMessage.CHECK_HELP_MSG;
 import static io.github.gaojizhou.constant.ErrorMessage.checkOtherHandel;
+
 /**
  * @author gaojizhou
  */
-public class ListStringHandler extends AbstractListHandler<String> {
+public class ListIntegerHandler extends AbstractListHandler<Integer> {
 
     @Override
     protected String getTypeName(Object o) {
-        if (o instanceof String) {
-            return VARCHAR;
+        if (o instanceof Integer) {
+            return INTEGER;
         } else {
             throw new ResultMapException(
-                    "ListStringHandler only fit to convert List<String> to varchar[], "
+                    "ListIntegerHandler only fit to convert List<Integer> to integer[], "
                             + CHECK_HELP_MSG
                             + checkOtherHandel(o)
             );
