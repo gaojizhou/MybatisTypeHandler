@@ -110,7 +110,7 @@
     <licenses>
         <license>
             <name>GPL-3.0-or-later</name>
-            <url>https://spdx.org/licenses/GPL-3.0-or-later.html</url>
+            <url>https://raw.githubusercontent.com/gaojizhou/MybatisTypeHandler/main/LICENSE</url>
         </license>
     </licenses>
     <scm>
