@@ -38,4 +38,4 @@ Mybatis xml file
 ```
 ## License
 
-See the [LICENSE](LICENSE.md) file for license rights and limitations (GPL-3.0 or later).
+See the [LICENSE](https://raw.githubusercontent.com/gaojizhou/MybatisTypeHandler/main/LICENSE) file for license rights and limitations (GPL-3.0 or later).
